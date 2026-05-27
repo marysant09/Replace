@@ -1,122 +1,223 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import "./App.css"
+import { useState } from "react"
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [tipoConta, setTipoConta] = useState("")
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
+
+    <div className="container">
+
+      <div className="left-side">
+
+        <div className="overlay">
+
+          <div className="brand">
+            <span>🍃</span>
+            <h2>Replace</h2>
+          </div>
+
+          <h1>
+            Evite desperdícios.
+            Economize todos os dias.
+          </h1>
+
           <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+            Conectamos pessoas, mercados e instituições
+            para reduzir desperdícios de alimentos.
           </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      </div>
+
+      <div className="right-side">
+
+        <div className="form-box">
+
+          <h1>Criar Conta</h1>
+
+          <p className="subtitle">
+            Preencha os dados abaixo
+          </p>
+
+          <form>
+
+            <div className="input-group">
+
+              <label>Tipo de conta</label>
+
+              <select
+                value={tipoConta}
+                onChange={(e) =>
+                  setTipoConta(e.target.value)
+                }
+              >
+
+                <option value="">
+                  Selecione
+                </option>
+
+                <option value="pessoa">
+                  Pessoa Física
+                </option>
+
+                <option value="mercado">
+                  Mercado
+                </option>
+
+                <option value="ong">
+                  ONG / Instituição
+                </option>
+
+              </select>
+
+            </div>
+
+            {/* PESSOA */}
+
+            {tipoConta === "pessoa" && (
+
+              <>
+
+                <div className="input-group">
+                  <label>Nome</label>
+
+                  <input
+                    type="text"
+                    placeholder="Digite seu nome"
+                  />
+                </div>
+
+                <div className="input-group">
+                  <label>Email</label>
+
+                  <input
+                    type="email"
+                    placeholder="Digite seu email"
+                  />
+                </div>
+
+              </>
+
+            )}
+
+            {/* MERCADO */}
+
+            {tipoConta === "mercado" && (
+
+              <>
+
+                <div className="input-group">
+                  <label>Nome do Mercado</label>
+
+                  <input
+                    type="text"
+                    placeholder="Nome do mercado"
+                  />
+                </div>
+
+                <div className="input-group">
+                  <label>CNPJ</label>
+
+                  <input
+                    type="text"
+                    placeholder="Digite o CNPJ"
+                  />
+                </div>
+
+                <div className="input-group">
+                  <label>Endereço</label>
+
+                  <input
+                    type="text"
+                    placeholder="Digite o endereço"
+                  />
+                </div>
+
+              </>
+
+            )}
+
+            {/* ONG */}
+
+            {tipoConta === "ong" && (
+
+              <>
+
+                <div className="input-group">
+                  <label>Nome da Instituição</label>
+
+                  <input
+                    type="text"
+                    placeholder="Nome da ONG"
+                  />
+                </div>
+
+                <div className="input-group">
+                  <label>CNPJ</label>
+
+                  <input
+                    type="text"
+                    placeholder="Digite o CNPJ"
+                  />
+                </div>
+
+                <div className="input-group">
+                  <label>Área de atuação</label>
+
+                  <input
+                    type="text"
+                    placeholder="Ex: alimentação"
+                  />
+                </div>
+
+              </>
+
+            )}
+
+            {/* SENHA */}
+
+            {tipoConta && (
+
+              <>
+
+                <div className="input-group">
+                  <label>Senha</label>
+
+                  <input
+                    type="password"
+                    placeholder="Digite sua senha"
+                  />
+                </div>
+
+                <div className="input-group">
+                  <label>Confirmar senha</label>
+
+                  <input
+                    type="password"
+                    placeholder="Confirme sua senha"
+                  />
+                </div>
+
+                <button>
+                  Cadastrar
+                </button>
+
+              </>
+
+            )}
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
   )
 }
 
-export default App
+export default App  
